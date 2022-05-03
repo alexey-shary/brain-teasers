@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.leetcode.medium;
 
 /**
  * 2. Add Two Numbers
