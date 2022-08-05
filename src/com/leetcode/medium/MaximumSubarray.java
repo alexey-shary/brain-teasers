@@ -1,4 +1,4 @@
-package com.leetcode.easy;
+package com.leetcode.medium;
 
 /**
  * 53. Maximum Subarray
@@ -13,18 +13,19 @@ public class MaximumSubarray {
         if (nums.length == 1) {
             return nums[0];
         }
-        int max = nums[0];
-        int sum = max;
+        int maximumOverall = nums[0];
+        int maximumCurrent = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            if (sum < 0) {
-                sum = nums[i];
+            // Decide whether include current element to Maximum Subarray or start a new subarray
+            if (maximumCurrent + nums[i] < nums[i]) {
+                maximumCurrent = nums[i];
             } else {
-                sum += nums[i];
+                maximumCurrent += nums[i];
             }
-            if (sum > max) {
-                max = sum;
+            if (maximumOverall < maximumCurrent) {
+                maximumOverall = maximumCurrent;
             }
         }
-        return max;
+        return maximumOverall;
     }
 }
