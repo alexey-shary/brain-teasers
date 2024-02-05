@@ -1,5 +1,8 @@
 package com.leetcode.medium;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * 53. Maximum Subarray
  *
@@ -27,5 +30,16 @@ public class MaximumSubarray {
             }
         }
         return maximumOverall;
+    }
+
+    // Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+    private int maxSubArray(int[] nums, int max) {
+        if (nums.length == 1) {
+            return nums[0] > max ? nums[0] : max;
+        }
+        int left = maxSubArray(Arrays.copyOfRange(nums, 0, nums.length - 1), max);
+        int right = maxSubArray(Arrays.copyOfRange(nums, 1, nums.length), max);
+        int own = Arrays.stream(nums).sum();
+        return IntStream.of(left, right, own, max).max().getAsInt();
     }
 }
