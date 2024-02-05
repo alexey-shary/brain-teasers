@@ -15,6 +15,7 @@ public class Subsets {
         List<List<Integer>> result = new ArrayList<>();
         if (nums == null || nums.length == 0) return result;
         backtracking(result, new ArrayList<>(), nums, 0);
+        // subsets(0, nums, new ArrayList<Integer>(), result);
         return result;
     }
 
@@ -28,5 +29,14 @@ public class Subsets {
         backtracking(result, working, nums, index + 1);
         working.remove(Integer.valueOf(nums[index]));
         backtracking(result, working, nums, index + 1);
+    }
+
+    private void subsets(int start, int[] nums, List<Integer> current, List<List<Integer>> result) {
+        result.add(new ArrayList(current));
+        for (int i = start; i < nums.length; i++) {
+            current.add(nums[i]);
+            subsets(i + 1, nums, current, result);
+            current.removeLast();
+        }
     }
 }

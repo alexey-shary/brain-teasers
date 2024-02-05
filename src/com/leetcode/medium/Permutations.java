@@ -13,6 +13,7 @@ public class Permutations {
         if (nums == null || nums.length == 0) return new ArrayList<>();
         List<List<Integer>> result = new ArrayList<>();
         permute(result, nums, nums.length);
+        // permute(nums, new ArrayList(), result);
         return result;
     }
 
@@ -34,6 +35,21 @@ public class Permutations {
                 nums[size - 1] = buff;
             }
             permute(result, nums, size - 1);
+        }
+    }
+
+    private void permute(int[] nums, List<Integer> current, List<List<Integer>> result) {
+        if (current.size() == nums.length) {
+            result.add(new ArrayList(current));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!current.contains(nums[i])) {
+                current.add(nums[i]);
+                permute(nums, current, result);
+                current.removeLast();
+            }
         }
     }
 }
