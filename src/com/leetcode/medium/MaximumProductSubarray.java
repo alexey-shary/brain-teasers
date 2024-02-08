@@ -11,6 +11,28 @@ package com.leetcode.medium;
  */
 public class MaximumProductSubarray {
     public int maxProduct(int[] nums) {
+        int maxProduct = nums[0];
+        int currentMaxProduct = 1;
+        for (int i = 0; i < nums.length; i++) {
+            currentMaxProduct *= nums[i];
+            maxProduct = Math.max(maxProduct, currentMaxProduct);
+            if (currentMaxProduct == 0) {
+                currentMaxProduct = 1;
+            }
+        }
+        currentMaxProduct = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            currentMaxProduct *= nums[i];
+            maxProduct = Math.max(maxProduct, currentMaxProduct);
+            if (currentMaxProduct == 0) {
+                currentMaxProduct = 1;
+            }
+        }
+        return maxProduct;
+    }
+
+    /*
+    public int maxProduct(int[] nums) {
         if (nums == null || nums.length == 0)
             return 0;
         if (nums.length == 1)
@@ -30,4 +52,5 @@ public class MaximumProductSubarray {
         }
         return maxProductOverall;
     }
+    */
 }
