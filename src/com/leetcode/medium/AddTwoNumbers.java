@@ -46,6 +46,23 @@ public class AddTwoNumbers {
 
         return start;
     }
+
+    /*
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int sum = 0;
+        ListNode newHead = new ListNode(0);
+        ListNode temp = newHead;
+        while (sum != 0 || l1 != null || l2 != null) {
+            sum += (l1 != null ? l1.val : 0) + (l2 != null ? l2.val : 0);
+            temp.next = new ListNode(sum % 10);
+            temp = temp.next;
+            sum /= 10;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
+        return newHead.next;
+    }
+    */
 }
 
 class ListNode {
