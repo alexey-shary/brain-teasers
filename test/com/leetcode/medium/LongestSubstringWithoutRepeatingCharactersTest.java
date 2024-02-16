@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LongestSubstringTest {
+public class LongestSubstringWithoutRepeatingCharactersTest {
     @Test
     public void testLengthOfLongestSubstring() {
-        LongestSubstring ls = new LongestSubstring();
+        LongestSubstringWithoutRepeatingCharacters ls = new LongestSubstringWithoutRepeatingCharacters();
         assertEquals(ls.lengthOfLongestSubstring("abcabcbb"), 3);
         assertEquals(ls.lengthOfLongestSubstring("bbbbb"), 1);
         assertEquals(ls.lengthOfLongestSubstring("pwwkew"), 3);
