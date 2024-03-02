@@ -26,4 +26,24 @@ public class RotateImage {
             }
         }
     }
+
+    /*
+    public void rotate(int[][] matrix) {
+        for (int layer = 0; layer < matrix.length / 2; layer++) {
+            int end = matrix.length - 1 - layer;
+            for (int i = layer; i < end; i++) {
+                int offset = i - layer;
+                int top = matrix[layer][i];
+                // left -> top
+                matrix[layer][i] = matrix[end - offset][layer];
+                // bottom -> left
+                matrix[end - offset][layer] = matrix[end][end - offset];
+                // right -> bottom
+                matrix[end][end - offset] = matrix[i][end];
+                // top -> right
+                matrix[i][end] = top;
+            }
+        }
+    }
+    */
 }
