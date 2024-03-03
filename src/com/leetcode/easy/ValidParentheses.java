@@ -1,5 +1,6 @@
 package com.leetcode.easy;
 
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -14,6 +15,27 @@ import java.util.Stack;
  * s consists of parentheses only '()[]{}'.
  */
 public class ValidParentheses {
+
+    public boolean isValid(String s) {
+        Stack<Character> parentheses = new Stack<>();
+        Map<Character, Character> openClosed = Map.of('(', ')', '[', ']', '{', '}');
+        for (char c: s.toCharArray()) {
+            if (openClosed.containsKey(c)) {
+                parentheses.push(c);
+            } else {
+                if (parentheses.isEmpty()) {
+                    return false;
+                }
+                char p = parentheses.pop();
+                if (openClosed.get(p) == null || openClosed.get(p) != c) {
+                    return false;
+                }
+            }
+        }
+        return parentheses.isEmpty();
+    }
+
+    /*
     private static final String OPENING_PARENTHESES = "({[";
     private String CLOSING_PARENTHESES = ")}]";
 
@@ -30,4 +52,5 @@ public class ValidParentheses {
         }
         return parentheses.isEmpty() ? true : false;
     }
+    */
 }

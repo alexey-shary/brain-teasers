@@ -19,11 +19,6 @@ public class IsAnagram {
         Arrays.sort(sChars);
         char[] tChars = t.toCharArray();
         Arrays.sort(tChars);
-        for (int i = 0; i < s.length(); i++) {
-            if (sChars[i] != tChars[i]) {
-                return false;
-            }
-        }
-        return true; // or return Arrays.equals(sChars, tChars)
+        return Arrays.equals(sChars, tChars);
     }
 }

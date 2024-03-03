@@ -13,7 +13,7 @@ import java.util.Set;
 public class LongestConsecutiveSequence {
     public int longestConsecutive(int[] nums) {
         int maxSeq = 0;
-        Set<Integer> sequences = new HashSet();
+        Set<Integer> sequences = new HashSet<>();
         for (int num : nums) {
             sequences.add(num);
         }

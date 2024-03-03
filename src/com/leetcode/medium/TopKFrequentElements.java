@@ -12,13 +12,9 @@ import java.util.stream.Collectors;
 public class TopKFrequentElements {
     public int[] topKFrequent(int[] nums, int k) {
         int[] result = new int[k];
-        Map<Integer, Integer> counts = new HashMap();
+        Map<Integer, Integer> counts = new HashMap<>();
         for (int i : nums) {
-            if (!counts.containsKey(i)) {
-                counts.put(i, 1);
-            } else {
-                counts.put(i, counts.get(i) + 1);
-            }
+            counts.merge(i, 1, Integer::sum);
         }
         List<Integer> sorted = counts.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).toList();
         for (int i = 0; i < k; i++) {
@@ -29,7 +25,7 @@ public class TopKFrequentElements {
 
     /*
     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> frequences = new HashMap();
+        Map<Integer, Integer> frequences = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             frequences.put(nums[i], frequences.getOrDefault(nums[i], 0) + 1);
         }

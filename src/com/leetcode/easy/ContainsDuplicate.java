@@ -13,6 +13,16 @@ import java.util.stream.Collectors;
 public class ContainsDuplicate {
     public boolean containsDuplicate(int[] nums) {
         Set<Integer> result = Arrays.stream(nums).boxed().collect(Collectors.toSet());
-        return result.size() == nums.length ? false : true;
+        return result.size() != nums.length;
     }
+
+    /*
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> distinctValues = new HashSet<Integer>();
+        for (int n: nums) {
+            if (!distinctValues.add(n)) return true;
+        }
+        return false;
+    }
+    */
 }

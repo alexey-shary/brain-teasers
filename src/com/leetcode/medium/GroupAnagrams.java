@@ -13,17 +13,13 @@ import java.util.*;
 public class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
         // O(n) solution
-        Map<String, List<String>> groups = new HashMap();
+        Map<String, List<String>> groups = new HashMap<>();
         for (String s : strs) {
             char[] sChars = s.toCharArray();
             Arrays.sort(sChars);
-            String anagramKey = new String(sChars);
-            if (!groups.containsKey(anagramKey)) {
-                groups.put(anagramKey, new ArrayList<String>());
-            }
-            groups.get(anagramKey).add(s);
+            groups.computeIfAbsent(String.valueOf(sChars), k -> new ArrayList<>()).add(s); // use sorted anagram as key
         }
-        return new ArrayList<List<String>>(groups.values());
+        return new ArrayList<>(groups.values());
 
         // O(n^2) solution
         /*
