@@ -12,7 +12,7 @@ import java.util.*;
  * Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
  */
 public class HouseRobber {
-    private final Map<Integer, Integer> memo = new HashMap();
+    private final Map<Integer, Integer> memo = new HashMap<>();
 
     /**
      * TODO: Step 1. Figure out recursive relation.

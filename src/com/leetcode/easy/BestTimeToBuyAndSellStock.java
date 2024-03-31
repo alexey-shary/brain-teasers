@@ -11,19 +11,17 @@ package com.leetcode.easy;
  */
 public class BestTimeToBuyAndSellStock {
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length < 2) {
-            return 0;
-        }
-        int min = prices[0];
-        int profit = 0;
+        int maxProfit = 0;
+        int minPrice = prices[0];
         for (int i = 1; i < prices.length; i++) {
-            if (profit < prices[i] - min) {
-                profit = prices[i] - min;
+            int currentProfit = prices[i] - minPrice;
+            if (currentProfit > maxProfit) {
+                maxProfit = currentProfit;
             }
-            if (prices[i] < min) {
-                min = prices[i];
+            if (prices[i] < minPrice) {
+                minPrice = prices[i];
             }
         }
-        return profit;
+        return maxProfit;
     }
 }
