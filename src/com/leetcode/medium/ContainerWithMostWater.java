@@ -29,9 +29,9 @@ public class ContainerWithMostWater {
         // O(n) complexity
         int i = 0, j = height.length - 1;
         while (i < j) {
-            int minHeight = height[i] < height[j] ? height[i] : height[j];
-            if (mostWater < minHeight * (j - i)) {
-                mostWater = minHeight * (j - i);
+            int water = (j - i) * Math.min(height[i], height[j]);
+            if (water > mostWater) {
+                mostWater = water;
             }
             if (height[i] < height[j]) {
                 i++;

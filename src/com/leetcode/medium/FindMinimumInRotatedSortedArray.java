@@ -18,7 +18,7 @@ public class FindMinimumInRotatedSortedArray {
             return nums[0];
         int left = 0, right = nums.length - 1;
         while (left < right) {
-            int middle = (left + right) / 2;
+            int middle = left + (right - left) / 2; // to prevent overflowing
             if (nums[middle] > nums[right]) {
                 left = middle + 1;
             } else {

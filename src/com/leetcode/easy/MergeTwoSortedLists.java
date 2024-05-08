@@ -10,6 +10,7 @@ package com.leetcode.easy;
  * Return the head of the merged linked list.
  */
 public class MergeTwoSortedLists {
+    /*
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null || list2 == null) return list1 == null ? list2 : list1;
 
@@ -34,8 +35,8 @@ public class MergeTwoSortedLists {
 
         return start.next;
     }
+    */
 
-    /*
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null) return list2;
         if (list2 == null) return list1;
@@ -47,7 +48,6 @@ public class MergeTwoSortedLists {
             return list2;
         }
     }
-    */
 }
 
 class ListNode {
