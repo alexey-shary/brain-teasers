@@ -25,13 +25,13 @@ import java.util.Map;
  * Your code will only be given the head of the original linked list.
  */
 public class CopyListWithRandomPointer {
-    public Node copyRandomList(Node head) {
+    public ListNodeRandom copyRandomList(ListNodeRandom head) {
         if (head == null) return null;
-        Map<Node, List<Node>> path = new HashMap();
-        Map<Node, Node> oldNew = new HashMap();
-        Node prev = null, newHead = null;
+        Map<ListNodeRandom, List<ListNodeRandom>> path = new HashMap();
+        Map<ListNodeRandom, ListNodeRandom> oldNew = new HashMap();
+        ListNodeRandom prev = null, newHead = null;
         while (head != null) {
-            Node newNode = new Node(head.val);
+            ListNodeRandom newNode = new ListNodeRandom(head.val);
             if (head.random != null) {
                 if (oldNew.get(head.random) != null) {
                     newNode.random = oldNew.get(head.random);
@@ -46,7 +46,7 @@ public class CopyListWithRandomPointer {
             }
             oldNew.put(head, newNode);
             if (path.get(head) != null) {
-                for (Node n: path.get(head)) {
+                for (ListNodeRandom n: path.get(head)) {
                     n.random = newNode;
                 }
             }
@@ -57,12 +57,12 @@ public class CopyListWithRandomPointer {
     }
 }
 
-class Node {
+class ListNodeRandom {
     int val;
-    Node next;
-    Node random;
+    ListNodeRandom next;
+    ListNodeRandom random;
 
-    public Node(int val) {
+    public ListNodeRandom(int val) {
         this.val = val;
         this.next = null;
         this.random = null;
