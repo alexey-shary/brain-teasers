@@ -17,12 +17,9 @@ public class NumberOfIslands {
         Set<String> islands = new HashSet<>();
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == '1') {
-                    if (!islands.contains(i + "," + j)) {
-                        numberOfIslands++;
-                        islands.add(i + "," + j);
-                        exploreIsland(grid, i, j, islands);
-                    }
+                if (grid[i][j] == '1' && !islands.contains(i + "," + j)) {
+                    numberOfIslands++;
+                    exploreIsland(grid, i, j, islands);
                 }
             }
         }
@@ -30,17 +27,15 @@ public class NumberOfIslands {
     }
 
     private void exploreIsland(char[][] grid, int i, int j, Set<String> islands) {
-        if (i < grid.length - 1 && grid[i + 1][j] == '1' && islands.add((i + 1) + "," + j)) {
-            exploreIsland(grid, i + 1, j, islands);
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || islands.contains(i + "," + j) || grid[i][j] != '1') {
+            return;
         }
-        if (0 < i && grid[i - 1][j] == '1' && islands.add((i - 1) + "," + j)) {
-            exploreIsland(grid, i - 1, j, islands);
-        }
-        if (j < grid[0].length - 1 && grid[i][j + 1] == '1' && islands.add(i + "," + (j + 1))) {
-            exploreIsland(grid, i, j + 1, islands);
-        }
-        if (0 < j && grid[i][j - 1] == '1' && islands.add(i + "," + (j - 1))) {
-            exploreIsland(grid, i, j - 1, islands);
-        }
+
+        islands.add(i + "," + j); // TODO: can mark visited square as '0' or '#' but it will change input grid
+
+        exploreIsland(grid, i + 1, j, islands);
+        exploreIsland(grid, i - 1, j, islands);
+        exploreIsland(grid, i, j + 1, islands);
+        exploreIsland(grid, i, j - 1, islands);
     }
 }
